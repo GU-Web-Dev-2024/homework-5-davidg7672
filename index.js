@@ -69,3 +69,17 @@ for (let i = 0; i < artPanels.length; i++) {
             "Art Works Viewed: " + counter;
     });
 }
+
+// reset button functionality
+let resetButton = document.getElementById("reset-button");
+resetButton.addEventListener("click", () => {
+    counter = 0;
+    for (let i = 0; i < artPanels.length; i++) {
+        let panel = artPanels[i];
+        if (panel.classList.contains("panelViewed")) {
+            panel.classList.remove("panelViewed");
+        }
+    }
+    document.getElementById("counter").textContent =
+        "Art Works Viewed: " + counter;
+});
