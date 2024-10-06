@@ -73,6 +73,7 @@ for (let i = 0; i < artPanels.length; i++) {
 // reset button functionality
 let resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", () => {
+    artPanels = document.querySelectorAll(".art-panel");
     counter = 0;
     for (let i = 0; i < artPanels.length; i++) {
         let panel = artPanels[i];
@@ -82,4 +83,35 @@ resetButton.addEventListener("click", () => {
     }
     document.getElementById("counter").textContent =
         "Art Works Viewed: " + counter;
+});
+
+// add artwork button
+let addButton = document.getElementById("add-art-button");
+addButton.addEventListener("click", () => {
+    if (artWorkCounter < newArtworks.length) {
+        let newDiv = document.createElement("div");
+        newDiv.className = "art-panel";
+        newDiv.innerHTML =
+            "<img src='" +
+            newArtworks[artWorkCounter].img +
+            "' alt='" +
+            newArtworks[artWorkCounter].title +
+            "' /> " +
+            "<p>" +
+            newArtworks[artWorkCounter].title +
+            " by " +
+            newArtworks[artWorkCounter].artist +
+            "</p>";
+        document.querySelector("section").appendChild(newDiv);
+        artWorkCounter++;
+
+        newDiv.addEventListener("click", () => {
+            if (!newDiv.classList.contains("panelViewed")) {
+                counter++;
+                newDiv.classList.add("panelViewed");
+            }
+            document.getElementById("counter").textContent =
+                "Art Works Viewed: " + counter;
+        });
+    }
 });
