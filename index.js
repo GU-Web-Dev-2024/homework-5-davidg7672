@@ -1,3 +1,10 @@
+/* 
+    David Sosa
+    CPSC 332 - Web Development
+    Homework 5 - JavaScript
+    Last Modified: October 7, 2024
+*/
+
 // List of additional artworks to add dynamically
 const newArtworks = [
     {
@@ -70,7 +77,7 @@ for (let i = 0; i < artPanels.length; i++) {
     });
 }
 
-// reset button functionality
+// Reset Button functionality
 let resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", () => {
     artPanels = document.querySelectorAll(".art-panel");
@@ -85,7 +92,7 @@ resetButton.addEventListener("click", () => {
         "Art Works Viewed: " + counter;
 });
 
-// add artwork button
+// Add Artwork Button Functionality
 let addButton = document.getElementById("add-art-button");
 addButton.addEventListener("click", () => {
     if (artWorkCounter < newArtworks.length) {
@@ -105,6 +112,7 @@ addButton.addEventListener("click", () => {
         document.querySelector("section").appendChild(newDiv);
         artWorkCounter++;
 
+        // Giving new div some attributes
         newDiv.addEventListener("click", () => {
             if (!newDiv.classList.contains("panelViewed")) {
                 counter++;
